@@ -28,6 +28,8 @@
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
 
+        {% main_menu max_levels=3 template="navbar.html"%}
+
         {% block content %}{% endblock %}
 
         {# Global javascript #}
