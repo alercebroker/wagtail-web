@@ -1,6 +1,6 @@
 
 import wagtail.core.blocks as blocks
-from wagtail.core.blocks import PageChooserBlock, RichTextBlock, URLBlock, IntegerBlock
+from wagtail.core.blocks import RichTextBlock
 from wagtail.images.blocks import ImageChooserBlock
 
 class TextBlock(blocks.StructBlock):
