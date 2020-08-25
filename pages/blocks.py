@@ -7,4 +7,4 @@ class TextBlock(blocks.StructBlock):
     text = RichTextBlock()
     class Meta:
         icon = "text"
-        template = "pages/text_block.html"
+        template = "pages/blocks/text_block.html"

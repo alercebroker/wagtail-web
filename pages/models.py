@@ -21,3 +21,19 @@ class MiscPage(Page):
         FieldPanel("short_description"),
         StreamFieldPanel("content")
     ]
+
+class ListPage(Page):
+
+    short_description = models.TextField(
+        blank=True,
+        max_length=500
+    )
+
+    content_panels = Page.content_panels + [
+        FieldPanel('short_description')
+    ]
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        context['children'] = self.get_children().live().public().specific()
+        return context
