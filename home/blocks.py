@@ -7,7 +7,7 @@ class PageLinkBlock(blocks.StructBlock):
 
     class Meta:
         icon = "user"
-        template = "home/page_link_block.html"
+        template = "home/blocks/page_link_block.html"
 
 
 class BannerBlock(blocks.StructBlock):

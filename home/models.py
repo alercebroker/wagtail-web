@@ -8,12 +8,13 @@ from wagtail.admin.edit_handlers import (
     RichTextField,
 )
 from wagtail.core.fields import StreamField
-from .blocks import BannerBlock, TextBlock, FormEmbedBlock
+from .blocks import BannerBlock, TextBlock, FormEmbedBlock, PageLinkBlock
+
 
 class HomePage(Page):
 
     content = StreamField(
-        [("banner", BannerBlock()), ("text", TextBlock()), ("form", FormEmbedBlock())],
+        [("banner", BannerBlock()), ("text", TextBlock()), ("form", FormEmbedBlock()), ("button", PageLinkBlock())],
         null=True,
     )
 
