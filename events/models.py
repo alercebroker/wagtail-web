@@ -20,6 +20,10 @@ class EventPage(MiscPage):
         ])
     ]
 
+    parent_page_type = [
+        'events.EventListPage'
+    ]
+
     def clean(self):
         super().clean()
         start_date = self.start_date
@@ -33,6 +37,10 @@ class EventPage(MiscPage):
 class EventListPage(ListPage):
     start_date = models.DateField()
     end_date = models.DateField()
+
+    subpage_types = [
+        'events.EventPage'
+    ]
 
     content_panels = ListPage.content_panels + [
         FieldRowPanel([
