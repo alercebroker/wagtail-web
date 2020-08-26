@@ -1,8 +1,11 @@
 {% load static wagtailuserbar %}
 {% load menu_tags %}
+{% load analytical %}
+
 <!DOCTYPE html>
 <html class="no-js" lang="en">
     <head>
+        {% analytical_head_top %}
         <meta charset="utf-8" />
         <title>
             {% block title %}
@@ -24,14 +27,18 @@
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
         {% endblock %}
+        {% analytical_head_bottom %}
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
+        {% analytical_body_top %}
         {% wagtailuserbar %}
 
         {% main_menu max_levels=3 template="navbar.html"%}
 
-        {% block content %}{% endblock %}
+        <main id="content-wrap" class="container" role="main">
+          {% block content %}{% endblock %}
+        </main>
 
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/web.js' %}"></script>
@@ -42,5 +49,6 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
          {% endblock %}
+         {% analytical_body_bottom %}
     </body>
 </html>
