@@ -1,3 +1,9 @@
-<div class="col-md-3 mx-auto">
-    <a class="btn btn-xl btn-block btn-outline-light mb-1 pt-3 pb-3" href="{{value.page.url}}">{{value.page.title}}</a>
+{%load static wagtailcore_tags%}
+<div class="col-md-6 col-lg-4 mb-5">
+    <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
+        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+            <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+        </div>
+        <a href="{{value.page.url}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">{{value.page}}</a>
+    </div>
 </div>

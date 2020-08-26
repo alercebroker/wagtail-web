@@ -1,6 +1,6 @@
 import wagtail.core.blocks as blocks
-from wagtail.core.blocks import PageChooserBlock, RichTextBlock, URLBlock, IntegerBlock
 from wagtail.images.blocks import ImageChooserBlock
+
 
 class PageLinkBlock(blocks.StructBlock):
     page = blocks.PageChooserBlock()
@@ -8,6 +8,14 @@ class PageLinkBlock(blocks.StructBlock):
     class Meta:
         icon = "user"
         template = "home/blocks/page_link_block.html"
+
+
+class PageLinksBlock(blocks.StructBlock):
+    title = blocks.CharBlock()
+    buttons = blocks.StreamBlock([("button", PageLinkBlock())])
+
+    class Meta:
+        template = "home/blocks/page_links_block.html"
 
 
 class BannerBlock(blocks.StructBlock):
@@ -28,7 +36,8 @@ class TextBlock(blocks.StructBlock):
 
 
 class FormEmbedBlock(blocks.StructBlock):
-    publish_url = URLBlock()
+    publish_url = blocks.URLBlock()
+
     class Meta:
         icon = "presentation"
         template = "home/blocks/form_embed_block.html"
