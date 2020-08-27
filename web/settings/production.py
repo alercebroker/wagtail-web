@@ -2,7 +2,7 @@ from .base import *
 import os
 ALLOWED_HOSTS = ["*"]
 CSRF_COOKIE_SECURE = False
-DEBUG = False
+DEBUG = os.getenv("DEBUG",False)
 
 SECRET_KEY = os.getenv("SECRET_KEY", "secret!")
 
