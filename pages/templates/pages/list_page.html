@@ -14,8 +14,8 @@
   <div class="container pt-2">
     <div class="d-flex flex-wrap d-flex-row justify-content-around">
       {% for child in children %}
-      <div class="col-md-4 col-sm-6 col-12">
-        <div class="card h-100" style="width: 17rem;">
+      <div class="py-1 col-md-3 col-sm-4 col-12">
+        <div class="card h-100">
           {% if child.image %}
             {% image child.image fill-500x500 as child_img %}
             <img class="card-img-top" src="{{child_img.url}}" alt="{{child.title}}-image">

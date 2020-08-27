@@ -7,18 +7,14 @@
       {{page.title}}
     </h1>
     {% if page.short_description%}
-    <p class="mt-1 lead">{{page.short_description}}</p>
+    <p class="mt-1">{{page.short_description}}</p>
     {% endif %}
-    <div class="d-flex justify-content-between">
+    <div class="d-flex flex-wrap justify-content-between">
       {{page.start_date}} - {{page.end_date}}
-      <div title="Add to Calendar" class="addeventatc">
-        Add to Calendar
-        <span class="start">{{page.start_date}}</span>
-        <span class="end">{{page.end_date}}</span>
-        <span class="title">{{page.title}}</span>
-        <span class="description">{{page.short_description}}</span>
-      </div>
+      <a class="btn btn-secondary" href="http://www.google.com/calendar/render?action=TEMPLATE&text={{page.title}}&dates={{page.start_date | date:"Ymd\\THi00"}}/{{page.end_date| date:"Ymd\\THi00"}}&details={{page.short_description}}&trp=false&sprop=&sprop=name:"
+      target="_blank" rel="nofollow">Add to calendar</a>
     </div>
+
   </div>
   </header>
   <div class="container pt-2">
@@ -29,8 +25,6 @@
   </div>
 
 {% block extra_css %}
-<script type="text/javascript" src="https://addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
-
 <style media="screen">
 .section-head {
     padding-top: calc(6rem + 30px);
