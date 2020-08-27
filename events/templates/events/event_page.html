@@ -1,31 +1,40 @@
 {% extends "base.html" %}
 {%load static wagtailcore_tags%}
 {% block content %}
-<section id="miscPage" class="shadow-lg" >
-   <div class="inner-banner px-2" id="innerBanner">
-     <h1 class="display-4">
-         {{page.title}}
-     </h1>
-     {% if page.short_description%}
-         <p class="mt-1 lead">{{page.short_description}}</p>
-     {% endif %}
-     {{page.start_date}} - {{page.end_date}}
-   </div>
-   <div class = "px-2">
-       {% for block in page.content %}
-           {% include_block block %}
-       {% endfor %}
-   </div>
-</section>
-
-{% endblock content %}
-
+  <header class="section-head bg-primary text-white">
+    <div class="container">
+    <h1 class="display-4">
+      {{page.title}}
+    </h1>
+    {% if page.short_description%}
+    <p class="mt-1 lead">{{page.short_description}}</p>
+    {% endif %}
+    <div class="d-flex justify-content-between">
+      {{page.start_date}} - {{page.end_date}}
+      <div title="Add to Calendar" class="addeventatc">
+        Add to Calendar
+        <span class="start">{{page.start_date}}</span>
+        <span class="end">{{page.end_date}}</span>
+        <span class="title">{{page.title}}</span>
+        <span class="description">{{page.short_description}}</span>
+      </div>
+    </div>
+  </div>
+  </header>
+  <div class="container pt-2">
+    {% for block in page.content %}
+    {% include_block block %}
+    {% endfor %}
+    {% endblock content %}
+  </div>
 
 {% block extra_css %}
+<script type="text/javascript" src="https://addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
 
 <style media="screen">
-.inner-banner {
-  background-color: #D8D8D8;
+.section-head {
+    padding-top: calc(6rem + 30px);
+    padding-bottom: 0.5rem;
 }
 </style>
 

@@ -24,14 +24,18 @@ class EventPage(MiscPage):
         'events.EventListPage'
     ]
 
+    class Meta:
+        ordering = ['start_date']
+
     def clean(self):
         super().clean()
         start_date = self.start_date
         end_date = self.end_date
-        if end_date < start_date:
-            raise ValidationError({
-                "end_date": ValidationError("End date should be greater than start date.")
-                })
+        if start_date and end_date:
+            if end_date < start_date:
+                raise ValidationError({
+                    "end_date": ValidationError("End date should be greater than start date.")
+                    })
 
 
 class EventListPage(ListPage):
@@ -61,5 +65,6 @@ class EventListPage(ListPage):
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
         children = self.get_children().live().public().specific()
+        children = sorted(children, key = lambda child: child.start_date)
         context['children'] = filter(lambda child: child.start_date.date() >= self.start_date and child.end_date.date() <= self.end_date, children)
         return context

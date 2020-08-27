@@ -21,7 +21,7 @@ class PageLinksBlock(blocks.StructBlock):
 class BannerBlock(blocks.StructBlock):
     title = blocks.CharBlock()
     short_text = blocks.CharBlock()
-    background_image = ImageChooserBlock()
+    background_image = ImageChooserBlock(required=False)
 
     class Meta:
         template = "home/blocks/banner_block.html"

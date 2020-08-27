@@ -1,9 +1,4 @@
 {%load static wagtailcore_tags%}
-<div class="col-md-6 col-lg-4 mb-5" style="text-align:center; vertical-align: middle">
-    <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
-        <div class="portfolio-item-caption d-flex align-items-center justify-content-center" link="{{value.page.url}}">
-        </div>
-        <!-- <img class="img-fluid" src="http://via.placeholder.com/300x300.png/1abc9c/fff?text={{value.page}}" alt="" /> -->
-        <h2 class="text-white">{{value.page}}</h2>
-    </div>
+<div>
+    <a type="button" class="btn btn-lg btn-outline-secondary" href="{{value.page.url}}">{{value.page}}</a>
 </div>

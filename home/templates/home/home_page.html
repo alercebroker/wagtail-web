@@ -1,15 +1,18 @@
 {% extends "base.html" %}
 {% load static wagtailimages_tags wagtailcore_tags %}
-{% load static %}
-
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
-{% for block in page.content %} 
-{% include_block block %} 
+{% for block in page.content %}
+{% include_block block %}
 {% endfor %}
 {% block extra_js %}
-<script type="text/javascript" src="../../static/js/home_page.js"></script>
+<script type="text/javascript" src="{% static "js/home_page.js" %}"></script>
 {% endblock %}
 
 {% endblock content %}
+
+
+{% block extra_css %}
+
+{% endblock %}
