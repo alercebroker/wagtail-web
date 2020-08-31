@@ -19,6 +19,13 @@
   </header>
   <div class="container pt-2">
 
+    <div class="d-flex d-flex-row flex-wrap">
+      {% for block in page.content %}
+      {% include_block block %}
+      {% endfor %}
+    </div>
+
+
     {% for child in children %}
     <div class="row py-1">
       <div class="card w-100">

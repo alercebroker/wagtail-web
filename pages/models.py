@@ -38,8 +38,16 @@ class ListPage(Page):
         max_length=500
     )
 
+    content = StreamField(
+        [
+            ("text", TextBlock()),
+        ],
+        null=True,
+        blank=True)
+
     content_panels = Page.content_panels + [
-        FieldPanel('short_description')
+        FieldPanel('short_description'),
+        StreamFieldPanel("content"),
     ]
 
     def get_context(self, request, *args, **kwargs):
