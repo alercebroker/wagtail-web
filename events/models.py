@@ -4,7 +4,16 @@ from django.core.exceptions import ValidationError
 from wagtail.admin.edit_handlers import Page, FieldPanel, FieldRowPanel
 from pages.models import MiscPage, ListPage
 
+import datetime
 # Create your models here.
+
+def filter_date(child,parent):
+    start_date = child.start_date.date() if type(child.start_date) is datetime.datetime else child.start_date
+    end_date = child.end_date.date() if type(child.end_date) is datetime.datetime else child.end_date
+    return start_date >= parent.start_date and end_date <= parent.end_date
+
+def sort_key(child):
+    return child.start_date.date() if type(child.start_date) is datetime.datetime else child.start_date
 
 
 class EventPage(MiscPage):
@@ -43,7 +52,8 @@ class EventListPage(ListPage):
     end_date = models.DateField()
 
     subpage_types = [
-        'events.EventPage'
+        'events.EventPage',
+        'events.EventListPage'
     ]
 
     content_panels = ListPage.content_panels + [
@@ -65,6 +75,9 @@ class EventListPage(ListPage):
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
         children = self.get_children().live().public().specific()
-        children = sorted(children, key = lambda child: child.start_date)
-        context['children'] = filter(lambda child: child.start_date.date() >= self.start_date and child.end_date.date() <= self.end_date, children)
+        children = sorted(children, key = sort_key)
+
+
+
+        context['children'] = filter(lambda child: filter_date(child,self), children)
         return context

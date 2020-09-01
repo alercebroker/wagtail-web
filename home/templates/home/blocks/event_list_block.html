@@ -1,0 +1,28 @@
+{%load static wagtailcore_tags%}
+<section class="py-2" >
+    <div class="container">
+        {% if value.title %}
+          <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">{{value.title}}</h2>
+        {% endif %}
+        <div class="d-flex flex-wrap d-flex-row justify-content-around">
+            {% for block in value.events %}
+            {% include_block block %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% block extra_css %}
+
+<style media="screen">
+
+.truncate {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+</style>
+
+{% endblock %}

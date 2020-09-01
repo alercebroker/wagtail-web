@@ -1,13 +1,10 @@
 {%load static wagtailcore_tags%}
-<section class="page-section portfolio" id="portfolio">
+<section class="py-4">
     <div class="container">
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">{{value.title}}</h2>
-        <!-- <div class="divider-custom">
-            <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-            <div class="divider-custom-line"></div>
-        </div> -->
-        <div class="d-flex flex-row  justify-content-around">
+        {% if value.title %}
+          <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">{{value.title}}</h2>
+        {% endif %}
+        <div class="d-flex flex-row flex-wrap justify-content-around">
             {% for block in value.buttons %}
             {% include_block block %}
             {% endfor %}

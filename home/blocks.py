@@ -1,5 +1,6 @@
 import wagtail.core.blocks as blocks
 from wagtail.images.blocks import ImageChooserBlock
+from events.models import EventListPage
 
 
 class PageLinkBlock(blocks.StructBlock):
@@ -11,7 +12,7 @@ class PageLinkBlock(blocks.StructBlock):
 
 
 class PageLinksBlock(blocks.StructBlock):
-    title = blocks.CharBlock()
+    title = blocks.CharBlock(required=False)
     buttons = blocks.StreamBlock([("button", PageLinkBlock())])
 
     class Meta:
@@ -41,3 +42,18 @@ class FormEmbedBlock(blocks.StructBlock):
     class Meta:
         icon = "presentation"
         template = "home/blocks/form_embed_block.html"
+
+
+class EventLinkBlock(blocks.StructBlock):
+    event = blocks.PageChooserBlock(page_type=EventListPage)
+    class Meta:
+        icon = "user"
+        template = "home/blocks/event_link_block.html"
+
+
+class EventListBlock(blocks.StructBlock):
+    title = blocks.CharBlock(required=False)
+    events = blocks.StreamBlock([("event", EventLinkBlock())])
+
+    class Meta:
+        template = "home/blocks/event_list_block.html"

@@ -1,0 +1,13 @@
+{%load static wagtailcore_tags%}
+<div class="col-6 pt-1">
+  <div class="card h-100">
+    <div class="card-header pt-4">
+      <h5 class="card-title">{{value.event.title}}</h5>
+      <p>{{value.event.start_date}} - {{value.event.end_date}}</p>
+    </div>
+    <div class="card-body pt-1 d-flex flex-column ">
+      <p class="card-text truncate ">{{value.event.short_description}}</p>
+      <a type="button" class="mt-auto btn btn-lg btn-outline-secondary" href="{{value.event.url}}">See more.</a>
+    </div>
+  </div>
+</div>
