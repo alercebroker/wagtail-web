@@ -25,9 +25,9 @@ WAGTAIL_SITE_NAME = os.getenv("WAGTAIL_SITE_NAME" ,"web")
 AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME','####')
 AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID','####')
 AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY','####')
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_CUSTOM_DOMAIN = 's3.us-east-2.amazonaws.com/%s' % AWS_STORAGE_BUCKET_NAME
 
-MEDIA_URL = "http://%s/" % AWS_S3_CUSTOM_DOMAIN
+MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 try:
